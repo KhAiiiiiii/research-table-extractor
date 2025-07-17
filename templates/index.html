@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Table Extractor</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="static/style.css">
+    <script src="static/download.js"></script>
+    <script src="static/script.js"></script>
+</head>
+<body>
+    <div class="container py-4">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card">
+                    <div class="card-header text-center">
+                        <h1 class="mb-3"><i class="bi bi-card-image me-2"></i>Research Table Extractor</h1>
+                        <p class="text-muted">This app simplifies the process of extracting table data from images.</p>
+                    </div>
+                    
+                    <div class="card-body">
+                        <!-- Upload Area -->
+                        <div id="uploadArea" class="upload-area">
+                            <div class="upload-icon">
+                                <i class="bi bi-cloud-arrow-up"></i>
+                            </div>
+                            <h4>Drag & Drop or Click to Upload</h4>
+                            <p class="text-muted mb-3">Supported formats: PNG, JPG, JPEG (Max: 4MB)</p>
+                            <button id="browseBtn" class="btn btn-upload btn-action">
+                                <i class="bi bi-folder2-open me-2"></i>Browse Files
+                            </button>
+                            <input type="file" id="fileInput" class="d-none" accept=".png,.jpg,.jpeg">
+                        </div>
+                        
+                        <!-- File Info -->
+                        <div id="fileInfo" class="file-info d-none">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <i class="bi bi-file-earmark-image me-2"></i>
+                                    <span id="fileName">filename.jpg</span>
+                                    <span id="fileSize" class="text-muted ms-2">(0 KB)</span>
+                                </div>
+                                <button id="clearBtn" class="btn btn-sm btn-outline-danger">
+                                    <i class="bi bi-x"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Processing Options -->
+                        <div class="option-card">
+                            <h5 class="mb-3"><i class="bi bi-gear me-2"></i>Options</h5>
+                            
+                            <div class="row mb-3">
+                                <div class="col-md-6 mb-3">
+                                    <span class="option-label">Convert Numbers</span>
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="convertNumbers" checked>
+                                        <label class="form-check-label" for="convertNumbers">Enable number conversion</label>
+                                    </div>
+                                    <p class="option-description">Store numerical values as numbers in output (otherwise stored as text)</p>
+                                </div>
+                                
+                                <div class="col-md-6 mb-3">
+                                    <span class="option-label">Convert Percentages</span>
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="convertPercentages" checked>
+                                        <label class="form-check-label" for="convertPercentages">Enable percentage conversion</label>
+                                    </div>
+                                    <p class="option-description">Store percentages in appropriate format in output (otherwise stored as text)</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Image Preview -->
+                        <div id="previewContainer" class="preview-container">
+                            <h5 class="mb-3"><i class="bi bi-image me-2"></i>Image Preview</h5>
+                            <img id="previewImage" class="preview-image" src="" alt="Preview">
+                        </div>
+                        
+                        <!-- Progress Bar -->
+                        <div id="progressBar" class="progress">
+                            <div class="progress-bar progress-bar-striped progress-bar-animated" 
+                                 role="progressbar" style="width: 0%"></div>
+                        </div>
+                        
+                        <!-- Status Message -->
+                        <div id="statusMessage" class="status-message"></div>
+                        
+                        <!-- Action Buttons -->
+                        <div class="d-flex justify-content-center mt-4">
+                            <button id="removeBtn" class="btn btn-remove btn-action">
+                                <i class="bi bi-trash me-2"></i>Remove Image
+                            </button>
+                            <button id="processBtn" class="btn btn-process btn-action">
+                                <i class="bi bi-lightning me-2"></i>Process Image
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Footer -->
+                <div class="footer">
+                    <p>© 2025 Research Table Extractor | Uploaded images are processed using Azure AI Document Intelligence</p>
+                    <p class="mb-0">Max file size: 4MB | Supported formats: PNG, JPG, JPEG</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
