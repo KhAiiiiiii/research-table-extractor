@@ -39,6 +39,9 @@ def handle_image():
             table_data = extract_table_from_result(raw_data,
                                                    request.form.get("convertNumbers", False) == "true",
                                                    request.form.get("convertPercentages", False) == "true")
+            if not table_data:
+                return jsonify({ "error": "Could not extract any tables from image"}), 400
+            
             save_tables_to_excel(table_data, "output", request.form.get("convertNumbers", False) == "true")
             logging.info(f"Completed file [{file.filename}] processing")
 
